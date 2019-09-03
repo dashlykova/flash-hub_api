@@ -12,8 +12,10 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'prettier'
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'factory_bot_rails'
 end
 
 group :development do
