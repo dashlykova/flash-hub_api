@@ -33,5 +33,6 @@ module FlashHubApi
             expose: %w(access-token expiry token-type uid client)
         end
       end
+    end
   end
 end
