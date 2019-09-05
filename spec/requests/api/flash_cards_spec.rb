@@ -7,7 +7,6 @@ RSpec.describe Api::FlashCardsController, type: :request do
       11.times do      
         FactoryBot.create(:flash_card)
       end
-
     end
 
     it "returns a collection of max 10 flash cards" do
