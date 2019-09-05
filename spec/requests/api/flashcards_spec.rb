@@ -5,7 +5,7 @@ RSpec.describe Api::FlashcardsController, type: :request do
 
     before do
       11.times do      
-        FactoryBot.create(:flashcard)
+        create(:flashcard)
       end
       get "/api/flashcards", headers: headers
     end

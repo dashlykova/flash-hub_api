@@ -13,7 +13,7 @@ RSpec.describe Flashcard, type: :model do
 
   describe "Factory" do
     it "should have valid factory" do
-      expect(FactoryBot.create(:flashcard)).to be_valid
+      expect(create(:flashcard)).to be_valid
     end
   end
 end
