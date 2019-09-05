@@ -10,7 +10,7 @@ RSpec.describe Api::FlashcardsController, type: :request do
       get "/api/flashcards", headers: headers
     end
 
-    it "returns a collection of max 10 flash cards" do
+    it "returns a deck with maximum 10 flashcards" do
       expect(json_response.count).to eq 10
     end
 
