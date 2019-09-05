@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FlashCard, type: :model do
+RSpec.describe Flashcard, type: :model do
   describe "DB columns" do
     it { is_expected.to have_db_column :question }
     it { is_expected.to have_db_column :answer }
@@ -13,7 +13,7 @@ RSpec.describe FlashCard, type: :model do
 
   describe "Factory" do
     it "should have valid factory" do
-      expect(FactoryBot.create(:flash_card)).to be_valid
+      expect(FactoryBot.create(:flashcard)).to be_valid
     end
   end
 end

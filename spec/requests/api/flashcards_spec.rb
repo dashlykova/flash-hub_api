@@ -1,21 +1,20 @@
-RSpec.describe Api::FlashCardsController, type: :request do
+RSpec.describe Api::FlashcardsController, type: :request do
   let(:headers) { { HTTP_ACCEPT: 'application/json' } }
 
-  describe "GET /api/flash_cards" do
+  describe "GET /api/flashcards" do
 
     before do
       11.times do      
-        FactoryBot.create(:flash_card)
+        FactoryBot.create(:flashcard)
       end
+      get "/api/flashcards", headers: headers
     end
 
     it "returns a collection of max 10 flash cards" do
-      get "/api/flash_cards", headers: headers
       expect(json_response.count).to eq 10
     end
 
     it "returns 200 response" do
-      get "/api/flash_cards", headers: headers
       expect(response.status).to eq 200
     end
   end

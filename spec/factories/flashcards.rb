@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :flash_card do
+  factory :flashcard do
     answer { "MyAnswer" }
     question { "MyQuestion" }
   end
