@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_081930) do
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
+    t.integer "status", default: 0
   end
 
 end

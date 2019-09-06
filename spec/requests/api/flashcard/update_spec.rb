@@ -2,9 +2,9 @@ RSpec.describe Api::FlashcardsController, type: :request do
   let(:headers) { { HTTP_ACCEPT: 'application/json' } }
   let(:flashcard) { create(:flashcard) }
   describe "PUT /api/flashcards/:id" do
-    
+
     describe 'sucessfully updates' do
-      before do
+      before do        
         put "/api/flashcards/"+"#{flashcard.id}", 
         params: {
           status: 'green'

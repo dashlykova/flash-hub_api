@@ -11,9 +11,6 @@ RSpec.describe Api::FlashcardsController, type: :request do
     end
 
     it "returns a deck with maximum 10 flashcards" do
-      
-      binding.pry
-      
       expect(json_response.count).to eq 10
     end
 
