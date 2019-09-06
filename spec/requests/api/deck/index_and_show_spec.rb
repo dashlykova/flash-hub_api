@@ -3,21 +3,17 @@ RSpec.describe Api::DecksController, type: :request do
   
   describe "GET /api/decks" do
     describe 'returns deck without specific category' do
-      let!(:decks) do
-        2.times do      
-          create(:deck)
-        end
-      end
+      let!(:decks) { 2.times { create(:deck)}}
 
       let!(:first_deck_cards) do
         10.times do
-          create(:flashcard, deck_id: decks.first.id)
+          create(:flashcard, deck: Deck.first)
         end
       end
 
       let!(:last_deck_cards) do
         10.times do
-          create(:flashcard, deck_id: decks.last.id)
+          create(:flashcard, deck: Deck.last)
         end
       end
 
@@ -25,17 +21,17 @@ RSpec.describe Api::DecksController, type: :request do
         get "/api/decks", headers: headers
       end
   
-      it "returns a single deck with 10 flashcards" do
-        expect(json_response.count).to eq 1
-        expect(json_response['decks'].first.count).to eq 10
+      it "returns a single deck with 10 flashcards" do              
+        expect(json_response['decks'].count).to eq 1
+        expect(json_response['decks'].first['flashcards'].count).to eq 10
       end
   
       it "returns 200 response" do
         expect(response.status).to eq 200
       end
   
-      it "returns next page number" do
-        expect(json_response['meta']['next_page']).to eq 2
+      it "returns next page number" do        
+        expect(json_response['meta']['nextPage']).to eq 2
       end
     end
 
@@ -58,7 +54,7 @@ RSpec.describe Api::DecksController, type: :request do
       end
 
       it "returns a single deck with 10 flashcards" do
-        expect(json_response.count).to eq 1
+        expect(json_response['decks'].count).to eq 1
         expect(json_response['decks'].first['flashcards'].count).to eq 10
       end
   
@@ -67,7 +63,7 @@ RSpec.describe Api::DecksController, type: :request do
       end
   
       it "returns next page number" do
-        expect(json_response['meta']['next_page']).to eq nil
+        expect(json_response['meta']['nextPage']).to eq nil
       end
 
       it "returns deck of correct category" do
