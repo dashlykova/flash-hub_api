@@ -22,7 +22,7 @@ RSpec.describe Api::DecksController, type: :request do
           get "/api/decks", headers: headers
         end
     
-        it "returns a single deck" do        
+        it "returns a single deck" do                  
           expect(json_response['decks'].count).to eq 1
         end
   
@@ -52,7 +52,7 @@ RSpec.describe Api::DecksController, type: :request do
           expect(response.status).to eq 200
         end
 
-        it 'returns correct page number' do
+        it 'returns correct page number' do          
           expect(json_response['meta']['currentPage']).to eq 2
         end
 
