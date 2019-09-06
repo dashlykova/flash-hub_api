@@ -1,4 +1,9 @@
 class Decks::IndexSerializer < ActiveModel::Serializer
-  attributes :category
-  has_many :flashcards, each_serializer: Flashcards::IndexSerializer
+  attributes :category, :flashcards
+
+  def flashcards
+    object.flashcards.each.map do |flashcard|
+      Flashcards::IndexSerializer.new(flashcard)
+    end
+  end
 end
