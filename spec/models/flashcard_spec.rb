@@ -17,4 +17,8 @@ RSpec.describe Flashcard, type: :model do
       expect(create(:flashcard)).to be_valid
     end
   end
+
+  describe "Association" do
+    it { is_expected.to belong_to :deck }
+  end
 end
