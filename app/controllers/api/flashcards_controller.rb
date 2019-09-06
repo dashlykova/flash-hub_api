@@ -25,8 +25,4 @@ class Api::FlashcardsController < ApplicationController
   def render_update_error(error_message)
     render json: { error: error_message }, status: 422
   end
-
-  def flashcard_params
-    params.permit(:status)
-  end
 end
