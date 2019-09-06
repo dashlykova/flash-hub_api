@@ -75,7 +75,7 @@ RSpec.describe Api::DecksController, type: :request do
         end
 
         it 'returns error message' do
-          expect(json_response['error']).to eq 'There is no available decks on this page'
+          expect(json_response['error']).to eq 'There is no available decks for this page and/or category'
         end
       end
 
@@ -83,7 +83,7 @@ RSpec.describe Api::DecksController, type: :request do
         before do
           get "/api/decks", 
           params: {
-            page: 'Wrong category'
+            category: 'Wrong category'
           },
           headers: headers
         end
@@ -93,7 +93,26 @@ RSpec.describe Api::DecksController, type: :request do
         end
 
         it 'returns error message' do
-          expect(json_response['error']).to eq 'Something went wrong'
+          expect(json_response['error']).to eq 'There is no available decks for this page and/or category'
+        end
+      end
+
+      describe 'sends in wrong datatype in params' do
+        before do
+          get "/api/decks", 
+          params: {
+            category: 0,
+            page: 'string'
+          },
+          headers: headers
+        end
+
+        it "returns 422 response" do
+          expect(response.status).to eq 422
+        end
+
+        it 'returns error message' do
+          expect(json_response['error']).to eq "invalid value for Integer(): \"string\""
         end
       end
     end

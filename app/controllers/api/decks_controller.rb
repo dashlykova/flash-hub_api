@@ -7,13 +7,14 @@ class Api::DecksController < ApplicationController
         @decks = Deck.all.page(params[:page] || 1).per_page(1)
       end
   
-      unless @decks == []
-        render_deck_success
+      if @decks.empty?
+        render_deck_error('There is no available decks for this page and/or category')
       else
-        render_deck_error('There is no available decks on this page')
+        render_deck_success
       end
-    rescue
-      render_deck_error('Something went wrong')
+
+    rescue => error
+      render_deck_error(error.to_s)
     end
   end
 
