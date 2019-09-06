@@ -4,6 +4,7 @@ RSpec.describe Flashcard, type: :model do
   describe "DB columns" do
     it { is_expected.to have_db_column :question }
     it { is_expected.to have_db_column :answer }
+    it { is_expected.to have_db_column :status }
   end
 
   describe "Validations" do
