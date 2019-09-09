@@ -10,6 +10,8 @@ gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors', require: 'rack/cors'
 gem 'prettier'
+gem 'active_model_serializers'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'pry-rails'
