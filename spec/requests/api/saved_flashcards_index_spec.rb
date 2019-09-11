@@ -1,9 +1,9 @@
-RSpec.describe Api::FlashcardsController, type: :request do
-  let(:user) { create(:user) }
-  let(:credentials) { user.create_new_auth_token }
-  let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
-  let(:red_saved_flashcards) { 7.times { create(:saved_flashcard, status: "red", user: user) } }
-  let(:yellow_saved_flashcards) { 10.times { create(:saved_flashcard, status: "yellow", user: user) } }
+RSpec.describe Api::SavedFlashcardsController, type: :request do
+  let!(:user) { create(:user) }
+  let!(:credentials) { user.create_new_auth_token }
+  let!(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
+  let!(:red_saved_flashcards) { 7.times { create(:saved_flashcard, status: "red", user: user) } }
+  let!(:yellow_saved_flashcards) { 10.times { create(:saved_flashcard, status: "yellow", user: user) } }
 
   describe "GET /api/saved_flashcards" do
 
