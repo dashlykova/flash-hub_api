@@ -17,6 +17,9 @@ RSpec.describe Api::SavedFlashcardsController, type: :request do
       end
   
       it "returns 200 response" do
+        
+        binding.pry
+        
         expect(response.status).to eq 200
       end
   

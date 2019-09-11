@@ -1,5 +1,8 @@
 class Api::SavedFlashcardsController < ApplicationController
-  def index
+  before_action :authenticate_api_user!
 
+  def index
+    saved_flashcards = SavedFlashcard.where(user: current_api_user, status: params[:status])
+    render json: saved_flashcards, each_serializer: SavedFlashcards::IndexSerializer  
   end
 end
