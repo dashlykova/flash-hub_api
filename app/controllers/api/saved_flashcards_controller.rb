@@ -29,7 +29,6 @@ class Api::SavedFlashcardsController < ApplicationController
     else
       render_saved_flashcard_error(saved_flashcard.errors.full_messages.to_sentence)
     end
-    
   end
 
   private
