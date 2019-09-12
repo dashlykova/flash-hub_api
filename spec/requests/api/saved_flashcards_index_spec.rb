@@ -16,15 +16,12 @@ RSpec.describe Api::SavedFlashcardsController, type: :request do
         headers: headers
       end
   
-      it "returns 200 response" do
-        
-        binding.pry
-        
-        expect(response.status).to eq 200
+      it "returns 200 response" do        
+        expect(response).to have_http_status :ok
       end
   
-      it "sets status for the correct flashcard" do
-        expect(json_response['saved_flashcards'].count).to eq 7
+      it "sets status for the correct flashcard" do        
+        expect(json_response['savedFlashcards'].count).to eq 7
       end
     end
 
@@ -38,11 +35,26 @@ RSpec.describe Api::SavedFlashcardsController, type: :request do
       end
   
       it "returns 200 response" do
-        expect(response.status).to eq 200
+        expect(response).to have_http_status :ok
       end
   
       it "sets status for the correct flashcard" do
-        expect(json_response['saved_flashcards'].count).to eq 17
+        expect(json_response['savedFlashcards'].count).to eq 17
+      end
+    end
+
+    describe 'unsuccessfull if no params are sent' do
+      before do        
+        get "/api/saved_flashcards",
+        headers: headers
+      end
+  
+      it "returns 400 response" do
+        expect(response.status).to eq 400
+      end
+  
+      it "returns error message" do
+        expect(json_response['error']).to eq 'You have no saved flashcards'
       end
     end
   end

@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :flashcards, through: :saved_flashcards
-
+  has_many :saved_flashcards
 end
