@@ -21,7 +21,7 @@ class Api::SavedFlashcardsController < ApplicationController
     end   
   end
 
-  def create    
+  def create
     saved_flashcard = current_api_user.saved_flashcards.create(saved_flashcard_params)
     
     if saved_flashcard.persisted?
